@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  user-select: none;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 18px;
+  color: #ababab;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #cdcdcd;
+  width: 100px;
+  height: 140px;
+  transition: all 0.1s;
+  overflow: hidden;
+}
+
+.card:not(.no-hover):hover {
+  transform: scale(1.4);
+}
+
+.card__front,
+.card__back {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card__back {
+  background-image: url("/img/player_card_back.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  outline-offset: -20px;
+}
