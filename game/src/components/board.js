@@ -2,6 +2,12 @@ import React from 'react';
 import './card.css';
 
 class Card extends React.Component {
+  onClick() {
+    if (this.props.onClick !== undefined) {
+      this.props.onClick();
+    }
+  }
+
   render() {
     const classNames = ['card'];
     if (!this.props.canHover) classNames.push('no-hover');
@@ -11,7 +17,7 @@ class Card extends React.Component {
     const back = <img src={ 'img/player_card_back.jpg'} className="card__back" alt={this.props.card.title} />
 
     return (
-      <div className={classNames.join(' ')} style={this.props.style}>
+      <div className={classNames.join(' ')} style={this.props.style} onClick={this.onClick.bind(this)}>
         {this.props.faceup ? front : back}
       </div>
     );
@@ -19,6 +25,11 @@ class Card extends React.Component {
 }
 
 class Deck extends React.Component {
+
+  handleClick(value) {
+    this.props.onClick(value);
+  }
+
   render() {
     let deck = [];
     for (let i = 0; i < this.props.deck.cards.length; i++) {
@@ -37,9 +48,8 @@ class Deck extends React.Component {
         };
       }
 
-
       deck.push(
-        <Card key={i} card={this.props.deck.cards[i]} style={style} canHover={canHover} faceup={faceup}/>
+        <Card key={i} card={this.props.deck.cards[i]} style={style} canHover={canHover} faceup={faceup} onClick={() => this.handleClick(i)}/>
       );
     }
 
@@ -62,9 +72,13 @@ class Hand extends React.Component {
     this.state = {style: handStyle};
   }
 
+  onClick = (id) => {
+    this.props.moves.playCard(id)
+  }
+
   render() {
     return (
-      <Deck deck={this.props.deck} style={this.state.style} />
+      <Deck deck={this.props.deck} style={this.state.style} onClick={this.onClick}/>
     );
   }
 }
@@ -80,9 +94,15 @@ class PlayerDeck extends React.Component {
     this.state = {style: playerDeckStyle};
   }
 
+  onClick = (id) => {
+    this.props.moves.drawCard()
+  }
+
   render() {
     return (
-      <Deck deck={this.props.deck} style={this.state.style} stacked="true" />
+      <div>
+        <Deck deck={this.props.deck} style={this.state.style} stacked="true" onClick={this.onClick} />
+      </div>
     );
   }
 }
@@ -93,7 +113,6 @@ class ControlArea extends React.Component {
 
     let playerDeckStyle = {
       display: 'flex',
-      maxWidth: '300px',
     }
     this.state = {style: playerDeckStyle};
   }
@@ -126,9 +145,9 @@ class PlayerArea extends React.Component {
         Control Area:
         <ControlArea deck={this.props.controlArea} />
         Player Deck:
-        <PlayerDeck deck={this.props.deck}  />
+        <PlayerDeck deck={this.props.deck} moves={this.props.moves} />
         Hand:
-        <Hand deck={this.props.hand} />
+        <Hand deck={this.props.hand} moves={this.props.moves} />
       </div>
     )
   }
@@ -138,7 +157,7 @@ export class LordOfTheRingsBoard extends React.Component {
   render() {
     return (
       <div>
-        <PlayerArea deck={this.props.G.deck} hand={this.props.G.hand} controlArea={this.props.G.controlArea} />
+        <PlayerArea deck={this.props.G.deck} hand={this.props.G.hand} controlArea={this.props.G.controlArea} moves={this.props.moves} />
       </div>
     );
   }
