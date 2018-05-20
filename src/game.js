@@ -5,13 +5,13 @@ import { Game } from 'boardgame.io/core';
 export const LordOfTheRings = Game({
   setup: (ctx) => {
     let deck = new Deck();
-    deck.addCard(new Card("Aragorn"));
-    deck.addCard(new Card("Gimli"));
-    deck.addCard(new Card("Cirdan"));
-    deck.addCard(new Card("Gandalf"));
-    deck.addCard(new Card("Boromir"));
-    deck.addCard(new Card("Merry"));
-    deck.addCard(new Card("Denethor"));
+    deck.addCard(new Card("Aragorn", "player"));
+    deck.addCard(new Card("Gimli", "player"));
+    deck.addCard(new Card("Cirdan", "player"));
+    deck.addCard(new Card("Gandalf", "player"));
+    deck.addCard(new Card("Boromir", "player"));
+    deck.addCard(new Card("Merry", "player"));
+    deck.addCard(new Card("Denethor", "player"));
 
     let encounterDeck = new Deck();
     encounterDeck.addCard(new Card("goblin_axeman", "encounter"));
