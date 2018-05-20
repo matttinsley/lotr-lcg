@@ -117,9 +117,12 @@ class ControlArea extends React.Component {
     this.state = {style: playerDeckStyle};
   }
 
+  // No click action for ControlArea yet.
+  onClick = (id) => {}
+
   render() {
     return (
-      <Deck deck={this.props.deck} style={this.state.style} />
+      <Deck deck={this.props.deck} style={this.state.style} onClick={this.onClick} />
     );
   }
 }
