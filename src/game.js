@@ -15,8 +15,8 @@ export const LordOfTheRings = Game({
 
     let encounterDeck = new Deck();
     encounterDeck.addCard(new Card("goblin_axeman", "encounter"));
-    encounterDeck.addCard(new Card("goblin_axeman", "encounter"));
-    encounterDeck.addCard(new Card("goblin_axeman", "encounter"));
+    encounterDeck.addCard(new Card("patrol_room", "encounter"));
+    encounterDeck.addCard(new Card("boar_clan_stalker", "encounter"));
 
     const G = {
       controlArea: new Deck(),
@@ -73,6 +73,12 @@ export const LordOfTheRings = Game({
       stagingArea.addCard(card);
       return { ...G, encounterDeck, }
     },
+
+    shuffleEncounterDeck(G, ctx) {
+      let encounterDeck = G.encounterDeck;
+      encounterDeck.shuffle();
+      return { ...G, encounterDeck }
+    }
   },
 
 

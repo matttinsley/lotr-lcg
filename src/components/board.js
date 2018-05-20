@@ -15,9 +15,14 @@ class EncounterArea extends React.Component {
     this.state = {style: encounterAreaStyle};
   }
 
+  shuffleDeck() {
+    this.props.moves.shuffleEncounterDeck();
+  }
+
   render() {
     return (
       <div id="encounter-area" style={this.state.style} >
+        <button onClick={this.shuffleDeck.bind(this)}> Shuffle Encounter Deck </button>
         <EncounterDeck deck={this.props.encounterDeck} moves={this.props.moves} />
         <StagingArea deck={this.props.stagingArea} />
       </div>
