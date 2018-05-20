@@ -26,7 +26,8 @@ class Deck extends React.Component {
       }
 
       deck.push(
-        <Card key={i} card={this.props.deck.cards[i]} style={style} canHover={canHover} faceup={faceup} onClick={() => this.handleClick(i)}/>
+        <Card key={i} card={this.props.deck.cards[i]} style={style} canHover={canHover}
+        faceup={faceup} onClick={() => this.handleClick(i)}/>
       );
     }
 
@@ -100,6 +101,24 @@ export class ControlArea extends React.Component {
   render() {
     return (
       <Deck deck={this.props.deck} style={this.state.style} onClick={this.onClick} />
+    );
+  }
+}
+
+export class EncounterDeck extends React.Component {
+  constructor(props) {
+    super(props);
+
+    let playerDeckStyle = {
+      display: 'flex',
+      maxWidth: '300px',
+    }
+    this.state = {style: playerDeckStyle};
+  }
+
+  render() {
+    return (
+      <Deck deck={this.props.deck} style={this.state.style} stacked="true" onClick={() => {}} />
     );
   }
 }

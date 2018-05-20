@@ -8,16 +8,22 @@ export const LordOfTheRings = Game({
     deck.addCard(new Card("Aragorn"));
     deck.addCard(new Card("Gimli"));
     deck.addCard(new Card("Cirdan"));
-    deck.addCard(new Card("Frodo"));
     deck.addCard(new Card("Gandalf"));
     deck.addCard(new Card("Boromir"));
     deck.addCard(new Card("Merry"));
     deck.addCard(new Card("Denethor"));
 
+    let encounterDeck = new Deck();
+    encounterDeck.addCard(new Card("Frodo"));
+    encounterDeck.addCard(new Card("Frodo"));
+    encounterDeck.addCard(new Card("Frodo"));
+    encounterDeck.addCard(new Card("Frodo"));
+
     const G = {
       controlArea: new Deck(),
       hand: new Deck(),
       deck: deck,
+      encounterDeck: encounterDeck, 
     }
     return G;
   },
