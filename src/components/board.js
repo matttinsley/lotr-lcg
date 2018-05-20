@@ -1,5 +1,5 @@
 import React from 'react';
-import { EncounterDeck, PlayerDeck, Hand, ControlArea } from './decks';
+import { EncounterDeck, StagingArea, PlayerDeck, Hand, ControlArea } from './decks';
 
 class EncounterArea extends React.Component {
   constructor(props) {
@@ -18,7 +18,8 @@ class EncounterArea extends React.Component {
   render() {
     return (
       <div id="encounter-area" style={this.state.style} >
-        <EncounterDeck deck={this.props.deck} />
+        <EncounterDeck deck={this.props.encounterDeck} moves={this.props.moves} />
+        <StagingArea deck={this.props.stagingArea} />
       </div>
     );
   }
@@ -54,7 +55,7 @@ export class LordOfTheRingsBoard extends React.Component {
   render() {
     return (
       <div>
-        <EncounterArea deck={this.props.G.encounterDeck} />
+        <EncounterArea encounterDeck={this.props.G.encounterDeck} stagingArea={this.props.G.stagingArea}  moves={this.props.moves}/>
         <PlayerArea deck={this.props.G.deck} hand={this.props.G.hand} controlArea={this.props.G.controlArea} moves={this.props.moves} />
       </div>
     );

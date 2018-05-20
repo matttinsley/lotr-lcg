@@ -14,15 +14,16 @@ export const LordOfTheRings = Game({
     deck.addCard(new Card("Denethor"));
 
     let encounterDeck = new Deck();
-    encounterDeck.addCard(new Card("Frodo", "encounter"));
-    encounterDeck.addCard(new Card("Frodo", "encounter"));
-    encounterDeck.addCard(new Card("Frodo", "encounter"));
+    encounterDeck.addCard(new Card("goblin_axeman", "encounter"));
+    encounterDeck.addCard(new Card("goblin_axeman", "encounter"));
+    encounterDeck.addCard(new Card("goblin_axeman", "encounter"));
 
     const G = {
       controlArea: new Deck(),
       hand: new Deck(),
       deck: deck,
       encounterDeck: encounterDeck,
+      stagingArea: new Deck(),
     }
     return G;
   },
@@ -59,7 +60,21 @@ export const LordOfTheRings = Game({
       hand.removeCard(id);
       return { ...G, hand, controlArea };
     },
+
+    drawEncounterCard(G, ctx) {
+      let encounterDeck = G.encounterDeck;
+      let stagingArea = G.stagingArea;
+      let card = encounterDeck.drawCard();
+      if (card === undefined) {
+        console.warn('Encounter deck is empty, cannot draw card.');
+        return undefined;
+      }
+
+      stagingArea.addCard(card);
+      return { ...G, encounterDeck, }
+    },
   },
+
 
   flow: {
       endGameIf: (G, ctx) => {

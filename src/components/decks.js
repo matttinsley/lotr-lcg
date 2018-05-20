@@ -106,19 +106,32 @@ export class ControlArea extends React.Component {
 }
 
 export class EncounterDeck extends React.Component {
-  constructor(props) {
-    super(props);
-
-    let playerDeckStyle = {
-      display: 'flex',
-      maxWidth: '300px',
-    }
-    this.state = {style: playerDeckStyle};
+  onClick = (id) => {
+    this.props.moves.drawEncounterCard();
   }
 
   render() {
+    let encounterDeckStyle = {
+      display: 'flex',
+      maxWidth: '300px',
+    }
     return (
-      <Deck deck={this.props.deck} style={this.state.style} stacked="true" onClick={() => {}} />
+      <Deck deck={this.props.deck} style={encounterDeckStyle} stacked="true" onClick={this.onClick} />
+    );
+  }
+}
+
+export class StagingArea extends React.Component {
+  onClick = (id) => {}
+
+  render() {
+    let stagingAreaStyle = {
+      display: 'flex',
+      maxWidth: '800px',
+    }
+
+    return (
+      <Deck deck={this.props.deck} style={stagingAreaStyle} onClick={this.onClick}/>
     );
   }
 }
