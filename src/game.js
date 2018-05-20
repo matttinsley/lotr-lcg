@@ -14,16 +14,15 @@ export const LordOfTheRings = Game({
     deck.addCard(new Card("Denethor"));
 
     let encounterDeck = new Deck();
-    encounterDeck.addCard(new Card("Frodo"));
-    encounterDeck.addCard(new Card("Frodo"));
-    encounterDeck.addCard(new Card("Frodo"));
-    encounterDeck.addCard(new Card("Frodo"));
+    encounterDeck.addCard(new Card("Frodo", "encounter"));
+    encounterDeck.addCard(new Card("Frodo", "encounter"));
+    encounterDeck.addCard(new Card("Frodo", "encounter"));
 
     const G = {
       controlArea: new Deck(),
       hand: new Deck(),
       deck: deck,
-      encounterDeck: encounterDeck, 
+      encounterDeck: encounterDeck,
     }
     return G;
   },

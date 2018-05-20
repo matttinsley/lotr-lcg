@@ -18,7 +18,6 @@ class EncounterArea extends React.Component {
   render() {
     return (
       <div id="encounter-area" style={this.state.style} >
-        EncounterDeck:
         <EncounterDeck deck={this.props.deck} />
       </div>
     );
@@ -26,9 +25,7 @@ class EncounterArea extends React.Component {
 }
 
 class PlayerArea extends React.Component {
-  constructor(props) {
-    super(props);
-
+  render () {
     let playerAreaStyle = {
       position: "absolute",
       bottom: 20,
@@ -36,18 +33,18 @@ class PlayerArea extends React.Component {
       width: "100%",
     }
 
-    this.state = {style: playerAreaStyle};
-  }
+    let bottomRowStyle = {
+      display: 'flex',
+      flexDirection: 'row',
+    }
 
-  render () {
     return (
-      <div id="player-area" style={this.state.style} >
-        Control Area:
+      <div id="player-area" style={playerAreaStyle} >
         <ControlArea deck={this.props.controlArea} />
-        Player Deck:
-        <PlayerDeck deck={this.props.deck} moves={this.props.moves} />
-        Hand:
-        <Hand deck={this.props.hand} moves={this.props.moves} />
+        <div id="bottom-row" style={bottomRowStyle} >
+          <PlayerDeck deck={this.props.deck} moves={this.props.moves} />
+          <Hand deck={this.props.hand} moves={this.props.moves} />
+        </div>
       </div>
     )
   }

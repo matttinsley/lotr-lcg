@@ -1,6 +1,7 @@
 export class Card {
-  constructor(title) {
+  constructor(title, cardType) {
     this._title = title;
+    this._cardType = cardType;
   }
 
   get title() {
@@ -9,5 +10,12 @@ export class Card {
 
   set title(title) {
     this._title = title;
+  }
+
+  get cardType() {
+    return this._cardType;
+  }
+  set cardType(cardType) {
+    this._cardType = cardType;
   }
 }
