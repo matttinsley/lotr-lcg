@@ -56,7 +56,9 @@ export class Hand extends React.Component {
 
   render() {
     return (
+      <div> Hand:
       <Deck deck={this.props.deck} style={this.state.style} onClick={this.onClick}/>
+      </div>
     );
   }
 }

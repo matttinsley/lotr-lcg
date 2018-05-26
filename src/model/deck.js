@@ -34,21 +34,4 @@ export class Deck {
     }
     return cards;
   }
-
-  // Shuffles cards using Fisher-Yates shuffling algorithm
-  shuffle() {
-    let counter = this.cards.length;
-
-    // While there are cards left
-    while (counter > 0) {
-        // Pick a random index
-        let index = Math.floor(Math.random() * counter);
-        // Decrease counter by 1
-        counter--;
-        // And swap the last element with it
-        let temp = this.cards[counter];
-        this.cards[counter] = this.cards[index];
-        this.cards[index] = temp;
-    }
-  }
 }

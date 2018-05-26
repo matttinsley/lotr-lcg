@@ -76,7 +76,7 @@ export const LordOfTheRings = Game({
 
     shuffleEncounterDeck(G, ctx) {
       let encounterDeck = G.encounterDeck;
-      encounterDeck.shuffle();
+      encounterDeck.cards = ctx.random.Shuffle(encounterDeck.cards);
       return { ...G, encounterDeck }
     }
   },

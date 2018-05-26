@@ -46,11 +46,11 @@ class PlayerArea extends React.Component {
 
     return (
       <div id="player-area" style={playerAreaStyle} >
-        <ControlArea deck={this.props.controlArea} />
         <div id="bottom-row" style={bottomRowStyle} >
           <PlayerDeck deck={this.props.deck} moves={this.props.moves} />
-          <Hand deck={this.props.hand} moves={this.props.moves} />
+          <ControlArea deck={this.props.controlArea} />
         </div>
+        <Hand deck={this.props.hand} moves={this.props.moves} />
       </div>
     )
   }
