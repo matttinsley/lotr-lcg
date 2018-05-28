@@ -6,10 +6,6 @@ export class Deck {
     }
   }
 
-  fromObject(obj) {
-    this.cards = obj.cards;
-  }
-
   toObject() {
     return {
       cards: this.cards
