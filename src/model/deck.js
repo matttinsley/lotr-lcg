@@ -1,30 +1,35 @@
 export class Deck {
-  constructor() {
-    this._cards = [];
+  constructor(obj = {}) {
+    this.cards = [];
+    if (obj.cards) {
+      this.cards = obj.cards;
+    }
   }
 
-  get cards() {
-    return this._cards;
+  fromObject(obj) {
+    this.cards = obj.cards;
   }
 
-  set cards(cards) {
-    this._cards = cards;
+  toObject() {
+    return {
+      cards: this.cards
+    }
   }
 
   addCard(card) {
-    this._cards.push(card);
+    this.cards.push(card);
   }
 
   removeCard(id) {
-    this._cards.splice(id, 1);
+    this.cards.splice(id, 1);
   }
 
   getCard(id) {
-    return this._cards[id];
+    return this.cards[id];
   }
 
   drawCard() {
-    return this._cards.pop();
+    return this.cards.pop();
   }
 
   drawCards(num) {
