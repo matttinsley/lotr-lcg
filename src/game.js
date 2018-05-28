@@ -17,7 +17,6 @@ export const LordOfTheRings = Game({
     encounterDeck.addCard(Card("goblin_axeman", "encounter"));
     encounterDeck.addCard(Card("patrol_room", "encounter"));
     encounterDeck.addCard(Card("boar_clan_stalker", "encounter"));
-    console.log(deck);
 
     const G = {
       controlArea: new Deck().toObject(),
