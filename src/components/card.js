@@ -13,7 +13,7 @@ export class Card extends React.Component {
     if (!this.props.canHover) classNames.push('no-hover');
     if (this.props.className) classNames.push(this.props.className);
 
-    const front = <img src={ 'img/' + this.props.card.title + '.jpg'} className="card__front" alt={this.props.card.title} />
+    const front = <img src={ 'img/cards/' + this.props.card.id + '.jpg'} className="card__front" alt={this.props.card.title} />
 
     let back_img = 'player_card_back.jpg';
     if (this.props.card.cardType === 'encounter') {

@@ -1,22 +1,17 @@
 import { Deck } from './model/deck';
 import { Card } from './model/card';
 import { Game } from 'boardgame.io/core';
+import * as cardDecks from './card_decks/player_decks'
 
 export const LordOfTheRings = Game({
   setup: (ctx) => {
-    let deck = new Deck();
-    deck.addCard(Card("Aragorn", "player"));
-    deck.addCard(Card("Gimli", "player"));
-    deck.addCard(Card("Cirdan", "player"));
-    deck.addCard(Card("Gandalf", "player"));
-    deck.addCard(Card("Boromir", "player"));
-    deck.addCard(Card("Merry", "player"));
-    deck.addCard(Card("Denethor", "player"));
-
     let encounterDeck = new Deck();
-    encounterDeck.addCard(Card("goblin_axeman", "encounter"));
-    encounterDeck.addCard(Card("patrol_room", "encounter"));
-    encounterDeck.addCard(Card("boar_clan_stalker", "encounter"));
+    encounterDeck.addCard(Card("0a6774e7-f110-4917-84b5-1f81a7aefbf8", "Patrol Room", "encounter"));
+    encounterDeck.addCard(Card("0a1166fb-fb90-4651-a8ae-7d532e41c2b6", "Fallen Stones", "encounter"));
+    encounterDeck.addCard(Card("0a0e6044-c5ab-43ed-832a-71516c7d035a", "Boar Clan Stalker", "encounter"));
+
+    let deck = new Deck();
+    deck.loadPlayerDeckFromXML(cardDecks.player_deck_1);
 
     const G = {
       controlArea: new Deck().toObject(),
