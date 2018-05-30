@@ -88,13 +88,4 @@ export const LordOfTheRings = Game({
       return { ...G, encounterDeck }
     }
   },
-
-
-  flow: {
-      endGameIf: (G, ctx) => {
-          if (false) {
-              return ctx.currentPlayer;
-          }
-      }
-  }
 });
